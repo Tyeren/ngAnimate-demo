@@ -11,10 +11,9 @@
         // list everything
         var hc = this;
         hc.addItem = addItem;
-        hc.lists = homeService.lists;
-        hc.items = homeService.items;
-        hc.currentList = Number(homeService.currentList);
-        hc.setCurrentList = setCurrentList;
+        hc.lists = homeService.storage.lists;
+        hc.items = homeService.storage.items;
+        hc.currentList = 0;
         hc.keyPress = keyPress;
         hc.removeCompleted = homeService.removeCompleted;
 
@@ -22,13 +21,9 @@
         function addItem() {
             // only add item if text isn't blank
             if (hc.newItemText && hc.newItemText.trim() !== '') {
-                homeService.addItem(hc.newItemText);
+                homeService.addItem(hc.newItemText, hc.currentList);
                 hc.newItemText = '';
             }
-        }
-
-        function setCurrentList(listNum) {
-            hc.currentList = homeService.currentList = Number(listNum);
         }
 
         function keyPress(event) {
@@ -41,6 +36,7 @@
                 hc.newItemText = '';
             }
         }
+
     }
 
 }());

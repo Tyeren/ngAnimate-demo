@@ -4,55 +4,57 @@
     angular.module('homeService', [])
         .service('homeService', homeService);
 
-    homeService.$inject = [];
+    homeService.$inject = ['$localStorage'];
 
-    function homeService() {
+    function homeService($localStorage) {
 
         // list everything
-        var nextItemNum = 1;
         var hs = this;
-        hs.currentList = new Number(0);
-        hs.lists = ['Today', 'Later'];
-        hs.items = [
-            {
-                itemNum: Number(0),
-                title: 'Git \'r dun',
-                listNum: 0,
-                completed: false
-            }
-        ];
+        hs.storage = $localStorage.$default(getDefaultData());
 
         hs.addItem = addItem;                   // adds the given item to current list
         hs.removeCompleted = removeCompleted;   // removes all completed items from all lists
+        hs.reset = reset;
 
         // public functions
-        function addItem(title) {
-            hs.items.push(
+        function addItem(title, currentList) {
+            hs.storage.items.push(
                 {
-                    itemNum: nextItemNum++,
+                    itemNum: hs.storage.nextItemNum++,
                     title: title,
-                    listNum: hs.currentList,
+                    listNum: currentList,
                     completed: false
                 }
             );
         }
 
-        function removeCompleted() {
-            for (var i=hs.items.length-1; i>=0; i--) {
-                if (hs.items[i].completed && hs.items[i].listNum == hs.currentList) {
-                    hs.items.splice(i, 1);
+        function removeCompleted(currentList) {
+            for (var i = hs.storage.items.length - 1; i >= 0; i--) {
+                if (hs.storage.items[i].completed
+                        && hs.storage.items[i].listNum == currentList) {
+                    hs.storage.items.splice(i, 1);
                 }
             }
         }
 
-        // private functions
-        function getItemIndex(itemNum) {
-            var index = hs.items.length - 1;
-            while (index > 0 && hs.items[index].itemNum !== itemNum) {
-                index--;
-            }
-            return index;
+        function reset() {
+            hs.storage.$reset(getDefaultData());
         }
+
+        // private functions
+        function getDefaultData() {
+            return {
+                nextItemNum: 1,
+                lists: ['Today', 'Later'],
+                items: [{
+                    itemNum: 0,
+                    title: 'Buy Mountain Dew',
+                    listNum: 0,
+                    completed: false
+                }]
+            };
+        }
+
     }
 
 }());
