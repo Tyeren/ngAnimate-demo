@@ -7,12 +7,10 @@ input[type=text], button { border: black 1px solid; }
 .completed-item { text-decoration: line-through; }
 label { font-weight: normal; }
 
+/* route animation */
+
 .div[ui-view]{
     height: 65px;
-}
-
-.ui-view-container {
-    /*position: relative;*/
 }
 
 [ui-view].ng-enter, [ui-view].ng-leave {
@@ -53,4 +51,34 @@ label { font-weight: normal; }
     -webkit-transform:translate3d(100px, 0, 0);
     -moz-transform:translate3d(100px, 0, 0);
     transform:translate3d(100px, 0, 0);
+}
+
+/* add, remove animation */
+
+.animate-repeat {
+    display: block;
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+    position: relative;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+    opacity:0;
+    max-height:0;
+    position: relative;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+    opacity:1;
+    max-height:40px;
+    position: relative;
 }
