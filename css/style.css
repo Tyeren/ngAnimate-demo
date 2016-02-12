@@ -56,7 +56,7 @@ label { font-weight: normal; }
 /* add, remove animation */
 
 .animate-repeat {
-    display: block;
+    display: block; /* needed for table rows */
 }
 
 .animate-repeat.ng-move,

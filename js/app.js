@@ -17,7 +17,7 @@
     function AppConfig($stateProvider, $urlRouterProvider, $localStorageProvider) {
 
         // pick a unique app prefix for local storage
-        $localStorageProvider.setKeyPrefix('tdapp');
+        $localStorageProvider.setKeyPrefix('tdapp-');
 
         // define all app states (pages)
         $stateProvider
