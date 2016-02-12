@@ -8,7 +8,7 @@
     <td-addlistbutton></td-addlistbutton><br />
     <br />
 
-    <table class="table table-striped table-condensed auto-width example-animate-container-repeat">
+    <table class="table table-striped table-condensed auto-width">
         <tr ng-repeat="item in filteredItems = (hc.items | filter:{listNum: hc.currentList}) track by item.itemNum"
             td-item item="item" index="$index+1" class="animate-repeat"></tr>
         <!-- if no items in list, show message -->

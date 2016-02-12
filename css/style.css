@@ -79,6 +79,6 @@ label { font-weight: normal; }
 .animate-repeat.ng-move.ng-move-active,
 .animate-repeat.ng-enter.ng-enter-active {
     opacity:1;
-    max-height:40px;
+    max-height:36px;
     position: relative;
 }
