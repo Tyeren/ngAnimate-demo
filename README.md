@@ -1,3 +1,5 @@
 # ngToDo
 uses AngularJS, and bootstrap ui
-demonstrates ui-router, controller-as syntax, controllers, services
+demonstrates ng-animate, ng-storage, ui-router, controller-as syntax, controllers, services
+
+hosted here: <a href='dolthead.github.io/ngAnimate-demo'>dolthead.github.io/ngAnimate-demo</a>
